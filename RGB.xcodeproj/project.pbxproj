@@ -559,7 +559,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PREFIX_HEADER = /Users/QUAN/Desktop/RGB/RGB/RGB.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)//RGB/RGB.pch";
 				INFOPLIST_FILE = RGB/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -572,7 +572,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PREFIX_HEADER = /Users/QUAN/Desktop/RGB/RGB/RGB.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)//RGB/RGB.pch";
 				INFOPLIST_FILE = RGB/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -646,6 +646,7 @@
 				1414FCD31CE42097003D1D81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1414FCD41CE42097003D1D81 /* Build configuration list for PBXNativeTarget "RGBTests" */ = {
 			isa = XCConfigurationList;
@@ -654,6 +655,7 @@
 				1414FCD61CE42097003D1D81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1414FCD71CE42097003D1D81 /* Build configuration list for PBXNativeTarget "RGBUITests" */ = {
 			isa = XCConfigurationList;
@@ -662,6 +664,7 @@
 				1414FCD91CE42097003D1D81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

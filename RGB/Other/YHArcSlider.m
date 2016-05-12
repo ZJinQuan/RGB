@@ -68,12 +68,12 @@ typedef struct{
 }
 //初始化
 - (void) setupDefaultConfigurations{
-    self.sectorsRadius = 45.0;
+//    self.sectorsRadius = 20;
     self.backgroundColor = [UIColor clearColor];
-    self.startAngle = toRadians(270);
-    self.markRadius = 20;
-    self.circleLineWidth = 20;
-    self.lineWidth = 2;
+//    self.startAngle = toRadians(250);
+    self.markRadius = 6;
+//    self.circleLineWidth = 20;
+//    self.lineWidth = 0;
 }
 
 #pragma mark - Setters
@@ -95,6 +95,9 @@ typedef struct{
             trackingSector = sector;
             trackingSectorDrawInf = drawInf;
             trackingSectorStartMarker = NO;
+            
+            NSLog(@"11111");
+            
             return YES;
         }
         
@@ -102,6 +105,7 @@ typedef struct{
             trackingSector = sector;
             trackingSectorDrawInf = drawInf;
             trackingSectorStartMarker = YES;
+            NSLog(@"22222");
             return YES;
         }
     
@@ -128,6 +132,7 @@ typedef struct{
                 trackingSector.startValue = trackingSector.minValue;
                 [self valueChangedNotification];
                 [self setNeedsDisplay];
+                NSLog(@"333333");
                 return YES;
             }
         }
@@ -135,6 +140,8 @@ typedef struct{
             trackingSector.startValue = trackingSector.endValue;
             [self valueChangedNotification];
             [self setNeedsDisplay];
+            NSLog(@"444444");
+            
             return YES;
         }
         trackingSector.startValue = newValue;
@@ -147,6 +154,7 @@ typedef struct{
                 trackingSector.endValue = trackingSector.maxValue;
                 [self valueChangedNotification];
                 [self setNeedsDisplay];
+                NSLog(@"555555");
                 return YES;
             }
         }
@@ -154,6 +162,7 @@ typedef struct{
             trackingSector.endValue = trackingSector.startValue;
             [self valueChangedNotification];
             [self setNeedsDisplay];
+            NSLog(@"66666");
             return YES;
         }
         trackingSector.endValue = newValue;
@@ -168,6 +177,7 @@ typedef struct{
 - (void) endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
     trackingSector = nil;
     trackingSectorStartMarker = NO;
+    NSLog(@"77777");
 }
 
 - (CGPoint) multiselectCenter{
@@ -234,31 +244,31 @@ typedef struct{
     CGContextClearRect(context, self.bounds);
     CGContextRestoreGState(context);
     
-    CGFloat len = r/sqrt(2);
+//    CGFloat len = r/sqrt(2);
     
     //外圆弧
-    CGContextSetLineWidth(context, self.lineWidth);
-    CGContextAddArc(context, x, y, r+10, self.startAngle, M_PI_4, 0);
-    CGContextStrokePath(context);
-    
-    //左端点
-    CGContextSaveGState(context);
-    CGContextAddArc(context, x-len, y+len, 10, -M_PI_4, M_PI_4*3, 0);
-    CGContextStrokePath(context);
-    
-    //内圆弧
-    CGContextSaveGState(context);
-    CGContextAddArc(context, x, y, r-10, self.startAngle, M_PI_4, 0);
-    CGContextStrokePath(context);
-    //右端点
-    CGContextSaveGState(context);
-    CGContextAddArc(context, x+len, y+len, 10, M_PI_4, M_PI_4*5, 0);
-    CGContextStrokePath(context);
+////    CGContextSetLineWidth(context, self.lineWidth);
+////    CGContextAddArc(context, x, y, r+10, self.startAngle, M_PI_4, 0);
+////    CGContextStrokePath(context);
+//    
+//    //左端点
+//    CGContextSaveGState(context);
+//    CGContextAddArc(context, x-len, y+len, 10, -M_PI_4, M_PI_4*3, 0);
+//    CGContextStrokePath(context);
+//    
+//    //内圆弧
+//    CGContextSaveGState(context);
+//    CGContextAddArc(context, x, y, r-10, self.startAngle, M_PI_4, 0);
+//    CGContextStrokePath(context);
+//    //右端点
+//    CGContextSaveGState(context);
+//    CGContextAddArc(context, x+len, y+len, 10, M_PI_4, M_PI_4*5, 0);
+//    CGContextStrokePath(context);
     
     //如果需要圆弧上面有字
-    if (self.drowNumber) {
-        self.drowNumber(r,x,y);
-    }
+//    if (self.drowNumber) {
+//        self.drowNumber(r,x,y);
+//    }
     
     //标记
     CGContextSetLineWidth(context, self.lineWidth);
@@ -270,12 +280,12 @@ typedef struct{
     [[startCircleColor colorWithAlphaComponent:drawInf.startMarkerAlpha] setStroke];
     CGContextAddArc(context, drawInf.startMarkerCenter.x, drawInf.startMarkerCenter.y, drawInf.startMarkerRadius-1, 0.0, 6.28, 0);
     CGContextFillPath(context);
-    //标记上面的字
-    NSString *startMarkerStr = [NSString stringWithFormat:@"%.0f", sector.startValue+16];
-    [self drawString:startMarkerStr
-            withFont:drawInf.startMarkerFontSize
-               color:[startCircleColor colorWithAlphaComponent:drawInf.startMarkerAlpha]
-          withCenter:drawInf.startMarkerCenter];
+//    //标记上面的字
+//    NSString *startMarkerStr = [NSString stringWithFormat:@"%.0f", sector.startValue+16];
+//    [self drawString:startMarkerStr
+//            withFont:drawInf.startMarkerFontSize
+//               color:[startCircleColor colorWithAlphaComponent:drawInf.startMarkerAlpha]
+//          withCenter:drawInf.startMarkerCenter];
 }
 
 
@@ -316,7 +326,7 @@ typedef struct{
     CGFloat y = center.y - (self.markRadius / 2);
     CGRect textRect = CGRectMake(x, y, self.markRadius*2, self.markRadius);
     
-    [s drawInRect:textRect withAttributes:dic];
+//    [s drawInRect:textRect withAttributes:dic];
 }
 @end
 
@@ -351,6 +361,7 @@ typedef struct{
 + (instancetype) sectorWithColor:(UIColor *)color maxValue:(double)maxValue{
     YHSector *sector = [self sectorWithColor:color];
     sector.maxValue = maxValue;
+    
     return sector;
 }
 

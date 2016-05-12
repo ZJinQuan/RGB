@@ -13,8 +13,14 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="state4.png" translatesAutoresizingMaskIntoConstraints="NO" id="JIZ-vx-FzD">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JXF-Mt-zHU">
+                    <rect key="frame" x="204" y="205" width="36" height="35"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="JIZ-vx-FzD" secondAttribute="trailing" id="42b-Po-9Uh"/>
                 <constraint firstItem="JIZ-vx-FzD" firstAttribute="leading" secondItem="25m-G5-NLq" secondAttribute="leading" id="5pe-3c-2sm"/>
@@ -23,6 +29,9 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="colorView" destination="JXF-Mt-zHU" id="yLF-F1-GYH"/>
+            </connections>
             <point key="canvasLocation" x="460" y="441"/>
         </view>
     </objects>

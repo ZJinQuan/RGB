@@ -76,6 +76,8 @@
     [self.mainView addSubview:self.modelView];
     [self.mainView addSubview:self.colorView];
     
+    [self clickSeg:self.lightBtn];
+    
 }
 - (IBAction)clickSeg:(UIButton *)sender {
     

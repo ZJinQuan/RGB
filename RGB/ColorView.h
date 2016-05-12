@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol SelectViewDelegate <NSObject>
+
+-(void)getCurrentColor:(UIColor *)color;
+
+@end
+
 
 @interface ColorView : UIView
+
+@property (nonatomic,weak)id<SelectViewDelegate>delegate;
 
 @end

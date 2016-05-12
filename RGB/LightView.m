@@ -22,11 +22,11 @@
 //        YHArcSlider *slider = [[YHArcSlider alloc] initWithFrame:self.bounds];
         
         YHArcSlider *slder = [[YHArcSlider alloc] initWithFrame:self.bounds];
-        slder.startAngle = M_PI_4*3;
+        slder.startAngle = M_PI_4* 3;
         
 //        [slder addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
         
-        UIColor *greenColor = [UIColor colorWithRed:29.0/255.0 green:207.0/255.0 blue:0.0 alpha:1.0];
+        UIColor *greenColor = [UIColor orangeColor];
         
         YHSector *sector = [YHSector sectorWithColor:greenColor maxValue:19];
         
@@ -37,9 +37,9 @@
         
         
         slder.sector = sector;
-        slder.sectorsRadius = 135;
-        
-        
+        slder.sectorsRadius = self.width / 2 - 10;
+        slder.lineWidth = 2;
+        slder.circleLineWidth = 10;
         [self addSubview:slder];
         
     }
