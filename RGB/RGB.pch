@@ -1,0 +1,14 @@
+//
+//  RGB.pch
+//  RGB
+//
+//  Created by QUAN on 16/5/12.
+//  Copyright © 2016年 QUAN. All rights reserved.
+//
+
+#ifndef RGB_pch
+#define RGB_pch
+
+#import "UIView+Extension.h";
+
+#endif /* RGB_pch */
