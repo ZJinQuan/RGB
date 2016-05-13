@@ -8,7 +8,17 @@
 
 #ifndef RGB_pch
 #define RGB_pch
+#ifdef __OBJC__
 
-#import "UIView+Extension.h";
+#import "UIView+Extension.h"
+#import "MySocket.h"
 
+#import "AppDelegate.h"
+
+#define RGBA(A, B, C, D) [UIColor colorWithRed:A/255.0 green:B/255.0 blue:C/255.0 alpha:D/1.0]
+
+#define kScreenWidth        [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight       [UIScreen mainScreen].bounds.size.height
+
+#endif
 #endif /* RGB_pch */

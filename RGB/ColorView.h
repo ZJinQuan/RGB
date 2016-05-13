@@ -18,4 +18,5 @@
 
 @property (nonatomic,weak)id<SelectViewDelegate>delegate;
 
+@property (nonatomic, assign) CGFloat dataStr;
 @end

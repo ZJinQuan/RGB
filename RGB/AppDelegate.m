@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "BrightnessViewController.h"
+#import "MainViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,12 +18,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    
-    
+
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    
+    MainViewController *mainVC = [[MainViewController alloc] init];
     BrightnessViewController *BrightnessVC = [[BrightnessViewController alloc] init];
     
     self.window.rootViewController = BrightnessVC;
@@ -30,6 +29,27 @@
     [self.window makeKeyAndVisible];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    
+    //连接 socket
+    __weak __typeof(self) weakSelf = self;
+    self.socket = [[MySocket alloc] init];
+    
+    self.socket.connectSuccess = ^()
+    {
+        NSLog(@">>>+++++++ success");
+        
+        [weakSelf.socket sendMessage:@"xxxxxxxxxxx"];
+        
+    };
+    
+    self.socket.callBack = ^(NSString *data)
+    {
+        NSLog(@">>> data %@",data);
+    };
+    
+    [self.socket socketConnectHost];
+    
+    
     
     return YES;
 }

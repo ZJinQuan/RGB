@@ -10,4 +10,6 @@
 
 @interface LightView : UIView
 
+@property (nonatomic, copy) NSString *light;
+
 @end

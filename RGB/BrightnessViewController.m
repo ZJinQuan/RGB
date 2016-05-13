@@ -10,6 +10,7 @@
 #import "LightView.h"
 #import "ModelView.h"
 #import "ColorView.h"
+#import "MySocket.h"
 
 @interface BrightnessViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *lightBtn;
@@ -23,6 +24,8 @@
 @property (nonatomic, strong) ModelView *modelView;
 @property (nonatomic, strong) ColorView *colorView;
 
+
+@property (nonatomic, strong) MySocket *socket;
 @end
 
 @implementation BrightnessViewController
@@ -67,11 +70,13 @@
     
 }
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    
+    [app.socket sendMessage:@"aaaaaaaaaa"];
+
     [self.mainView addSubview:self.lightView];
     [self.mainView addSubview:self.modelView];
     [self.mainView addSubview:self.colorView];
@@ -79,6 +84,8 @@
     [self clickSeg:self.lightBtn];
     
 }
+
+
 - (IBAction)clickSeg:(UIButton *)sender {
     
     switch (sender.tag) {

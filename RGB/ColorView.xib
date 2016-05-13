@@ -16,7 +16,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JXF-Mt-zHU">
-                    <rect key="frame" x="204" y="205" width="36" height="35"/>
+                    <rect key="frame" x="217" y="220" width="23" height="20"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>

@@ -71,7 +71,7 @@ typedef struct{
 //    self.sectorsRadius = 20;
     self.backgroundColor = [UIColor clearColor];
 //    self.startAngle = toRadians(250);
-    self.markRadius = 6;
+    self.markRadius = 12;
 //    self.circleLineWidth = 20;
 //    self.lineWidth = 0;
 }
@@ -96,7 +96,7 @@ typedef struct{
             trackingSectorDrawInf = drawInf;
             trackingSectorStartMarker = NO;
             
-            NSLog(@"11111");
+            
             
             return YES;
         }
@@ -105,7 +105,7 @@ typedef struct{
             trackingSector = sector;
             trackingSectorDrawInf = drawInf;
             trackingSectorStartMarker = YES;
-            NSLog(@"22222");
+            
             return YES;
         }
     
@@ -132,7 +132,7 @@ typedef struct{
                 trackingSector.startValue = trackingSector.minValue;
                 [self valueChangedNotification];
                 [self setNeedsDisplay];
-                NSLog(@"333333");
+                
                 return YES;
             }
         }
@@ -140,7 +140,7 @@ typedef struct{
             trackingSector.startValue = trackingSector.endValue;
             [self valueChangedNotification];
             [self setNeedsDisplay];
-            NSLog(@"444444");
+            
             
             return YES;
         }
@@ -154,7 +154,7 @@ typedef struct{
                 trackingSector.endValue = trackingSector.maxValue;
                 [self valueChangedNotification];
                 [self setNeedsDisplay];
-                NSLog(@"555555");
+                
                 return YES;
             }
         }
@@ -162,7 +162,7 @@ typedef struct{
             trackingSector.endValue = trackingSector.startValue;
             [self valueChangedNotification];
             [self setNeedsDisplay];
-            NSLog(@"66666");
+            
             return YES;
         }
         trackingSector.endValue = newValue;
@@ -177,7 +177,7 @@ typedef struct{
 - (void) endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
     trackingSector = nil;
     trackingSectorStartMarker = NO;
-    NSLog(@"77777");
+    
 }
 
 - (CGPoint) multiselectCenter{

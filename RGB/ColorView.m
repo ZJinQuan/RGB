@@ -7,6 +7,7 @@
 //
 
 #import "ColorView.h"
+#import "LightView.h"
 
 #define MYWIDTH self.bounds.size.width
 #define MYHEIGHT self.bounds.size.height
@@ -19,6 +20,7 @@
 @property (nonatomic,strong)UIImageView *centerImage;//中间的图片
 @property (weak, nonatomic) IBOutlet UIView *colorView;
 
+@property (nonatomic, strong) LightView *lightView;
 @end
 
 @implementation ColorView
@@ -29,27 +31,25 @@
     if (self) {
         self = [[[NSBundle mainBundle] loadNibNamed:@"ColorView" owner:self options:nil] lastObject];
         
-        self.centerImage = [[UIImageView alloc]initWithFrame:CGRectMake(60, 60, 15, 15)];
-        self.centerImage.image = [UIImage imageNamed:@"icon_absorb"];
+        self.centerImage = [[UIImageView alloc]initWithFrame:CGRectMake(60, 60, 30, 30)];
+        self.centerImage.image = [UIImage imageNamed:@"xishe.png"];
         [self addSubview:self.centerImage];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(LightView:) name:@"LightView" object:nil];
+        
     }
     return self;
 }
 
-
-//-(void)drawRect:(CGRect)rect{
-//    
-//    [super drawRect:rect];
-//
-//    UIImage *imageCenter = [UIImage imageNamed:@"state4"];
-//    [imageCenter drawInRect:self.bounds];
-//    
-//    self.backgroundColor = [UIColor blackColor];
-//    
-//    self.centerImage = [[UIImageView alloc]initWithFrame:CGRectMake(20, 20, 15, 15)];
-//    self.centerImage.image = [UIImage imageNamed:@"icon_absorb"];
-//    [self addSubview:self.centerImage];
-//}
+-(void) LightView:(NSNotification *)not{
+    
+    self.dataStr = [(NSString *)not.object floatValue];
+    
+    NSLog(@"------========-%f",self.dataStr);
+    
+    
+}
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
@@ -57,19 +57,60 @@
     CGPoint currentPoint = [touch locationInView:self];
     
     CGFloat chassRadius = (MYHEIGHT - 40)*0.5 - MYWIDTH/20;
-    NSLog(@"chassRadius:%f",chassRadius);
+//    NSLog(@"chassRadius:%f",chassRadius);
     CGFloat absDistanceX = fabs(currentPoint.x - MYCENTER.x);
     CGFloat absDistanceY = fabs(currentPoint.y - MYCENTER.y);
     CGFloat currentTopointRadius = sqrtf(absDistanceX  * absDistanceX + absDistanceY *absDistanceY);
     
-    NSLog(@"currentRadius:%f",currentTopointRadius);
+//    NSLog(@"currentRadius:%f",currentTopointRadius);
     
     if(currentTopointRadius < chassRadius){//实在色盘上面
         
         self.centerImage.center =  currentPoint;
         UIColor *color = [self getPixelColorAtLocation:currentPoint];
-        
+
         self.colorView.backgroundColor = color;
+        
+        UIColor *color1 = [UIColor redColor];
+        
+        CGFloat const *colorData1 = CGColorGetComponents(color1.CGColor);
+        
+        NSLog(@"------------%f, %f, %f",colorData1[0] * 255.0f, colorData1[1]* 255.0f, colorData1[2]* 255.0f);
+        
+        CGFloat const *colorData = CGColorGetComponents(color.CGColor);
+        
+        NSLog(@"------------%f, %f, %f",colorData[0] * 255.0f, colorData[1]* 255.0f, colorData[2]* 255.0f);
+        
+        
+        CGFloat const dataliht = self.dataStr;
+        
+        AppDelegate *app = [UIApplication sharedApplication].delegate;
+        
+        
+        Byte bytes[17];
+        for (int i = 0; i < 17; i++) {
+            bytes[i] = 0x00;
+        }
+        bytes[0] = 0x55;
+        bytes[1] = 0xaa;
+        bytes[2] = 0x01;
+        bytes[3] = 0x01;
+        bytes[4] = 0x02;
+        bytes[5] = colorData[0] * 255.0f;
+        bytes[6] = colorData[1] * 255.0f;
+        bytes[7] = colorData[2] * 255.0f;
+        bytes[8] = dataliht;
+        
+        
+        
+        NSLog(@"-============------++++%hhu",bytes[8]);
+        
+        NSData *data = [NSData dataWithBytes:bytes length:17];
+        NSLog(@"---------------%@",data);
+
+        [app.socket senddata:data];
+        
+        
         if(self.delegate && [self.delegate respondsToSelector:@selector(getCurrentColor:)]){
             
             [self.delegate getCurrentColor:color];
@@ -95,6 +136,27 @@
         //取色
         self.centerImage.center = currentPoint;
         UIColor *color = [self getPixelColorAtLocation:currentPoint];
+        
+        CGFloat const *colorData = CGColorGetComponents(color.CGColor);
+        
+        AppDelegate *app = [UIApplication sharedApplication].delegate;
+
+        Byte bytes[17];
+        for (int i = 0; i < 17; i++) {
+            bytes[i] = 0x00;
+        }
+        bytes[0] = 0x55;
+        bytes[1] = 0xaa;
+        bytes[2] = 0x01;
+        bytes[3] = 0x01;
+        bytes[4] = 0x02;
+        bytes[5] = colorData[0] * 255.0f;
+        bytes[6] = colorData[1] * 255.0f;
+        bytes[7] = colorData[2] * 255.0f;
+        bytes[8] = 0xff;
+        NSData *data = [NSData dataWithBytes:bytes length:17];
+        
+        [app.socket senddata:data];
         
         self.colorView.backgroundColor = color;
         if(self.delegate && [self.delegate respondsToSelector:@selector(getCurrentColor:)]){
