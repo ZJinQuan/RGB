@@ -7,9 +7,15 @@
 //
 
 #import "MainViewController.h"
+#import "MainView.h"
+#import "PageView.h"
 
 @interface MainViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-@property (weak, nonatomic) IBOutlet UIScrollView *mainView;
+
+//@property (weak, nonatomic) IBOutlet UIPageControl *pageView;
+
+@property (nonatomic, strong) UIPageControl *pageView;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *collView;
 
 @end
@@ -19,44 +25,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    /*
-    
-    UIView *v1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth -20, kScreenHeight)];
-    
-    v1.backgroundColor = [UIColor yellowColor];
-    
-    UIView *v2 = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth + 10, 0, kScreenWidth -20, kScreenHeight)];
-    
-    v2.backgroundColor = [UIColor purpleColor];
-    
-    UIView *v3 = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth * 2 + 10, 0, kScreenWidth -20, kScreenHeight)];
-    
-    v3.backgroundColor = [UIColor lightGrayColor];
-    
-    UIView *v4 = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth *3 + 10, 0, kScreenWidth-20, kScreenHeight)];
-    
-    v4.backgroundColor = [UIColor grayColor];
-    
-    UIView *v5 = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth *4 + 10, 0, kScreenWidth-20, kScreenHeight)];
-    
-    v5.backgroundColor = [UIColor darkGrayColor];
-    
-    [_mainView addSubview:v1];
-    [_mainView addSubview:v2];
-    [_mainView addSubview:v3];
-    [_mainView addSubview:v4];
-    [_mainView addSubview:v5];
-    
-    _mainView.contentSize = CGSizeMake(kScreenWidth *5, v1.height);
-    //    _mainView.pagingEnabled = YES;
-    
-    //    _mainView.contentInset = UIEdgeInsetsMake(0, -20, 0, -20);
-    
-    */
-    
     UICollectionViewFlowLayout *flowLayout= [[UICollectionViewFlowLayout alloc] init];
     
     flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    
+    flowLayout.itemSize = CGSizeMake(kScreenWidth, 500);
+    
+    flowLayout.minimumLineSpacing = 0;
     
     self.collView.collectionViewLayout = flowLayout;
     
@@ -64,15 +39,36 @@
     
     [self.collView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
     
+    self.collView.pagingEnabled = YES;
     
-
+    PageView *pageView = [[PageView alloc] initWithFrame:CGRectMake(0, 80, self.view.bounds.size.width, 37)];
     
+    pageView.backgroundColor = [UIColor clearColor];
+    
+    pageView.numberOfPages = 8;
+    
+    pageView.currentPage = 0;
+    
+    pageView.pageIndicatorTintColor = [UIColor clearColor];
+    
+    pageView.currentPageIndicatorTintColor = [UIColor clearColor];
+    
+    [self.view addSubview:pageView];
+    
+    self.pageView = pageView;
+    
+    [self.pageView addTarget:self action:@selector(pageTurn:) forControlEvents:UIControlEventValueChanged];
 }
 
-//定义展示的Section的个数
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return 1;
+-(void)pageTurn:(UIPageControl *) sender {
+    
+    //令UIScrollView做出相应的滑动显示
+    CGSize viewSize = self.collView.frame.size;
+    CGRect rect = CGRectMake(sender.currentPage * viewSize.width, 0, viewSize.width, viewSize.height);
+    [self.collView scrollRectToVisible:rect animated:YES];
+    
+    [sender setNeedsDisplay];
+    
 }
 
 //定义展示的UICollectionViewCell的个数
@@ -86,30 +82,51 @@
 {
     static NSString * CellIdentifier = @"Cell";
     UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-
     
-    cell.backgroundColor = [UIColor colorWithRed:((10 * indexPath.row) / 255.0) green:200.0 blue:255.0 alpha:1.0f];
     CGRect rect = [cell convertRect:cell.frame toView:self.view];
     
-//    UIView *view = [[UIView alloc] initWithFrame:]
+    NSLog(@"%f, %f",cell.bounds.size.height, cell.bounds.size.width);
     
-//    [cell addSubview:<#(nonnull UIView *)#>]
+    if (!cell) {
+        cell = [[UICollectionViewCell alloc]init];
+    }else{
+        while ([cell.contentView.subviews lastObject] != nil) {
+            [[cell.contentView.subviews lastObject] removeFromSuperview];
+        }
+    }
+    
+    MainView *mainView = [[MainView alloc] initWithFrame:cell.bounds];
+    mainView.centerX = self.view.centerX;
+    
+    [cell.contentView addSubview:mainView];
+    
+
     
     return cell;
 }
 
 //定义每个UICollectionView 的大小
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return CGSizeMake(300, 500);
-}
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+////    return CGSizeMake(300, 500);
+//    return self.view.bounds.size;
+//}
 
 //定义每个UICollectionView 的 margin
--(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
-    return UIEdgeInsetsMake(5, 5, 5, 5);
-}
+//-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+//{
+//    return UIEdgeInsetsMake(0, 0, 0, 0);
+//}
 
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    
+    //更新UIPageControl的当前页
+    CGPoint offset = scrollView.contentOffset;
+    CGRect bounds = scrollView.frame;
+    [self.pageView setCurrentPage:offset.x / bounds.size.width];
+    NSLog(@"%f",offset.x / bounds.size.width);
+    
+}
 
 
 @end

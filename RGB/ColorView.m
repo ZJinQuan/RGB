@@ -71,11 +71,8 @@
 
         self.colorView.backgroundColor = color;
         
-        UIColor *color1 = [UIColor redColor];
         
-        CGFloat const *colorData1 = CGColorGetComponents(color1.CGColor);
         
-        NSLog(@"------------%f, %f, %f",colorData1[0] * 255.0f, colorData1[1]* 255.0f, colorData1[2]* 255.0f);
         
         CGFloat const *colorData = CGColorGetComponents(color.CGColor);
         

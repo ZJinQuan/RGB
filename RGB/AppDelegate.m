@@ -24,7 +24,7 @@
     MainViewController *mainVC = [[MainViewController alloc] init];
     BrightnessViewController *BrightnessVC = [[BrightnessViewController alloc] init];
     
-    self.window.rootViewController = BrightnessVC;
+    self.window.rootViewController = mainVC;
     
     [self.window makeKeyAndVisible];
     

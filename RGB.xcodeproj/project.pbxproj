@@ -48,6 +48,7 @@
 		1414FD291CE45DFC003D1D81 /* YHMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 1414FD271CE45DFC003D1D81 /* YHMath.m */; };
 		144CDA241CE5F7310045FBD5 /* yanse.png in Resources */ = {isa = PBXBuildFile; fileRef = 144CDA231CE5F7310045FBD5 /* yanse.png */; };
 		144CDA261CE5F7BA0045FBD5 /* xishe.png in Resources */ = {isa = PBXBuildFile; fileRef = 144CDA251CE5F7BA0045FBD5 /* xishe.png */; };
+		145D23B11CE97C4100B4CDB8 /* PageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 145D23B01CE97C4100B4CDB8 /* PageView.m */; };
 		146CD2481CE5688D0077FEE3 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 146CD2451CE5688D0077FEE3 /* AsyncSocket.m */; };
 		146CD2491CE5688D0077FEE3 /* MySocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 146CD2471CE5688D0077FEE3 /* MySocket.m */; };
 		146CD24D1CE5B7C40077FEE3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 146CD24B1CE5B7C40077FEE3 /* MainViewController.m */; };
@@ -130,12 +131,14 @@
 		1414FD271CE45DFC003D1D81 /* YHMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHMath.m; sourceTree = "<group>"; };
 		144CDA231CE5F7310045FBD5 /* yanse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yanse.png; sourceTree = "<group>"; };
 		144CDA251CE5F7BA0045FBD5 /* xishe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xishe.png; sourceTree = "<group>"; };
+		145D23AF1CE97C4100B4CDB8 /* PageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageView.h; sourceTree = "<group>"; };
+		145D23B01CE97C4100B4CDB8 /* PageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageView.m; sourceTree = "<group>"; };
 		146CD2441CE5688D0077FEE3 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
 		146CD2451CE5688D0077FEE3 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
 		146CD2461CE5688D0077FEE3 /* MySocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySocket.h; sourceTree = "<group>"; };
 		146CD2471CE5688D0077FEE3 /* MySocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySocket.m; sourceTree = "<group>"; };
 		146CD24A1CE5B7C40077FEE3 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		146CD24B1CE5B7C40077FEE3 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		146CD24B1CE5B7C40077FEE3 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MainViewController.m; sourceTree = "<group>"; };
 		146CD24C1CE5B7C40077FEE3 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		146CD24F1CE5D9ED0077FEE3 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
 		146CD2501CE5D9ED0077FEE3 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
@@ -199,6 +202,8 @@
 				146CD24F1CE5D9ED0077FEE3 /* MainView.h */,
 				146CD2501CE5D9ED0077FEE3 /* MainView.m */,
 				146CD2521CE5D9F90077FEE3 /* MainView.xib */,
+				145D23AF1CE97C4100B4CDB8 /* PageView.h */,
+				145D23B01CE97C4100B4CDB8 /* PageView.m */,
 				1414FCDA1CE4213C003D1D81 /* BrightnessViewController.h */,
 				1414FCDB1CE4213C003D1D81 /* BrightnessViewController.m */,
 				1414FCDC1CE4213C003D1D81 /* BrightnessViewController.xib */,
@@ -464,6 +469,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1414FCDD1CE4213C003D1D81 /* BrightnessViewController.m in Sources */,
+				145D23B11CE97C4100B4CDB8 /* PageView.m in Sources */,
 				146CD2481CE5688D0077FEE3 /* AsyncSocket.m in Sources */,
 				1414FCAC1CE42096003D1D81 /* AppDelegate.m in Sources */,
 				1414FD281CE45DFC003D1D81 /* YHArcSlider.m in Sources */,
