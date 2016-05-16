@@ -105,19 +105,6 @@
     return cell;
 }
 
-//定义每个UICollectionView 的大小
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-////    return CGSizeMake(300, 500);
-//    return self.view.bounds.size;
-//}
-
-//定义每个UICollectionView 的 margin
-//-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-//{
-//    return UIEdgeInsetsMake(0, 0, 0, 0);
-//}
-
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     
     //更新UIPageControl的当前页
