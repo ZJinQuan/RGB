@@ -46,6 +46,8 @@
 		1414FD231CE439E4003D1D81 /* ModelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1414FD221CE439E4003D1D81 /* ModelView.xib */; };
 		1414FD281CE45DFC003D1D81 /* YHArcSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1414FD251CE45DFC003D1D81 /* YHArcSlider.m */; };
 		1414FD291CE45DFC003D1D81 /* YHMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 1414FD271CE45DFC003D1D81 /* YHMath.m */; };
+		142E481E1CEAF28600E1802B /* Main2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 142E481C1CEAF28600E1802B /* Main2ViewController.m */; };
+		142E481F1CEAF28600E1802B /* Main2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 142E481D1CEAF28600E1802B /* Main2ViewController.xib */; };
 		144CDA241CE5F7310045FBD5 /* yanse.png in Resources */ = {isa = PBXBuildFile; fileRef = 144CDA231CE5F7310045FBD5 /* yanse.png */; };
 		144CDA261CE5F7BA0045FBD5 /* xishe.png in Resources */ = {isa = PBXBuildFile; fileRef = 144CDA251CE5F7BA0045FBD5 /* xishe.png */; };
 		145D23B11CE97C4100B4CDB8 /* PageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 145D23B01CE97C4100B4CDB8 /* PageView.m */; };
@@ -129,6 +131,9 @@
 		1414FD251CE45DFC003D1D81 /* YHArcSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHArcSlider.m; sourceTree = "<group>"; };
 		1414FD261CE45DFC003D1D81 /* YHMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHMath.h; sourceTree = "<group>"; };
 		1414FD271CE45DFC003D1D81 /* YHMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHMath.m; sourceTree = "<group>"; };
+		142E481B1CEAF28600E1802B /* Main2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Main2ViewController.h; sourceTree = "<group>"; };
+		142E481C1CEAF28600E1802B /* Main2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Main2ViewController.m; sourceTree = "<group>"; };
+		142E481D1CEAF28600E1802B /* Main2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Main2ViewController.xib; sourceTree = "<group>"; };
 		144CDA231CE5F7310045FBD5 /* yanse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yanse.png; sourceTree = "<group>"; };
 		144CDA251CE5F7BA0045FBD5 /* xishe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xishe.png; sourceTree = "<group>"; };
 		145D23AF1CE97C4100B4CDB8 /* PageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageView.h; sourceTree = "<group>"; };
@@ -196,6 +201,9 @@
 				1414FCAA1CE42096003D1D81 /* AppDelegate.h */,
 				1414FCAB1CE42096003D1D81 /* AppDelegate.m */,
 				1414FD111CE42ED5003D1D81 /* RGB.pch */,
+				142E481B1CEAF28600E1802B /* Main2ViewController.h */,
+				142E481C1CEAF28600E1802B /* Main2ViewController.m */,
+				142E481D1CEAF28600E1802B /* Main2ViewController.xib */,
 				146CD24A1CE5B7C40077FEE3 /* MainViewController.h */,
 				146CD24B1CE5B7C40077FEE3 /* MainViewController.m */,
 				146CD24C1CE5B7C40077FEE3 /* MainViewController.xib */,
@@ -216,7 +224,7 @@
 				1414FD1F1CE439D6003D1D81 /* ModelView.h */,
 				1414FD201CE439D6003D1D81 /* ModelView.m */,
 				1414FD221CE439E4003D1D81 /* ModelView.xib */,
-				146CD2431CE568450077FEE3 /* socket */,
+				146CD2431CE568450077FEE3 /* Socket */,
 				1414FD0D1CE42E83003D1D81 /* Other */,
 				1414FCDF1CE42207003D1D81 /* Images */,
 				1414FCA71CE42096003D1D81 /* Supporting Files */,
@@ -297,7 +305,7 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
-		146CD2431CE568450077FEE3 /* socket */ = {
+		146CD2431CE568450077FEE3 /* Socket */ = {
 			isa = PBXGroup;
 			children = (
 				146CD2441CE5688D0077FEE3 /* AsyncSocket.h */,
@@ -305,6 +313,7 @@
 				146CD2461CE5688D0077FEE3 /* MySocket.h */,
 				146CD2471CE5688D0077FEE3 /* MySocket.m */,
 			);
+			name = Socket;
 			path = socket;
 			sourceTree = "<group>";
 		};
@@ -439,6 +448,7 @@
 				1414FD041CE4222F003D1D81 /* pabr@2x.png in Resources */,
 				1414FD011CE4222F003D1D81 /* btn_power@2x.png in Resources */,
 				1414FD051CE4222F003D1D81 /* state1_pre@2x.png in Resources */,
+				142E481F1CEAF28600E1802B /* Main2ViewController.xib in Resources */,
 				1414FCFF1CE4222F003D1D81 /* btn_model_pre@2x.png in Resources */,
 				1414FCDE1CE4213C003D1D81 /* BrightnessViewController.xib in Resources */,
 				144CDA261CE5F7BA0045FBD5 /* xishe.png in Resources */,
@@ -474,6 +484,7 @@
 				1414FCAC1CE42096003D1D81 /* AppDelegate.m in Sources */,
 				1414FD281CE45DFC003D1D81 /* YHArcSlider.m in Sources */,
 				1414FD211CE439D6003D1D81 /* ModelView.m in Sources */,
+				142E481E1CEAF28600E1802B /* Main2ViewController.m in Sources */,
 				146CD2511CE5D9ED0077FEE3 /* MainView.m in Sources */,
 				1414FD1C1CE43994003D1D81 /* ColorView.m in Sources */,
 				1414FD291CE45DFC003D1D81 /* YHMath.m in Sources */,

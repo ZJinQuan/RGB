@@ -8,6 +8,7 @@
 
 #import "ColorView.h"
 #import "LightView.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define MYWIDTH self.bounds.size.width
 #define MYHEIGHT self.bounds.size.height
@@ -53,6 +54,8 @@
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"closingSlide" object:nil];
+    
     UITouch *touch = [touches anyObject];
     CGPoint currentPoint = [touch locationInView:self];
     
@@ -67,13 +70,10 @@
     if(currentTopointRadius < chassRadius){//实在色盘上面
         
         self.centerImage.center =  currentPoint;
-        UIColor *color = [self getPixelColorAtLocation:currentPoint];
+        UIColor *color = [self colorOfPoint:currentPoint];
 
         self.colorView.backgroundColor = color;
-        
-        
-        
-        
+
         CGFloat const *colorData = CGColorGetComponents(color.CGColor);
         
         NSLog(@"------------%f, %f, %f",colorData[0] * 255.0f, colorData[1]* 255.0f, colorData[2]* 255.0f);
@@ -99,7 +99,6 @@
         bytes[8] = dataliht;
         
         
-        
         NSLog(@"-============------++++%hhu",bytes[8]);
         
         NSData *data = [NSData dataWithBytes:bytes length:17];
@@ -111,14 +110,14 @@
         if(self.delegate && [self.delegate respondsToSelector:@selector(getCurrentColor:)]){
             
             [self.delegate getCurrentColor:color];
-            
-            
         }
     }
     
 }
 
 -(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"closingSlide" object:nil];
     
     UITouch *touch = [touches anyObject];
     CGPoint currentPoint = [touch locationInView:self];
@@ -132,7 +131,10 @@
     if (currentTopointRadius <chassisRadius) {
         //取色
         self.centerImage.center = currentPoint;
-        UIColor *color = [self getPixelColorAtLocation:currentPoint];
+        
+//        UIColor *color1 = [self colorOfPoint:currentPoint];
+        
+        UIColor *color = [self colorOfPoint:currentPoint];
         
         CGFloat const *colorData = CGColorGetComponents(color.CGColor);
         
@@ -167,13 +169,32 @@
 }
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"closingSlide" object:@"closingSlide"];
 }
 
 -(void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
     
 }
+
+- (UIColor *)colorOfPoint:(CGPoint)point {
+    
+    unsigned char pixel[4] = {0};
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef context = CGBitmapContextCreate(pixel, 1, 1, 8, 4, colorSpace, (CGBitmapInfo)kCGImageAlphaPremultipliedLast);
+    
+    CGContextTranslateCTM(context, -point.x, -point.y);
+    
+    [self.layer renderInContext:context];
+    
+    CGContextRelease(context);
+    CGColorSpaceRelease(colorSpace);
+    
+    UIColor *color = [UIColor colorWithRed:pixel[0]/255.0 green:pixel[1]/255.0 blue:pixel[2]/255.0 alpha:pixel[3]/255.0];
+    
+    return color;
+}
+
 
 - (UIColor*) getPixelColorAtLocation:(CGPoint)point {
     UIColor* color = nil;

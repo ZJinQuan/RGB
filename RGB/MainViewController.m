@@ -58,6 +58,24 @@
     self.pageView = pageView;
     
     [self.pageView addTarget:self action:@selector(pageTurn:) forControlEvents:UIControlEventValueChanged];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closingSlide:) name:@"closingSlide" object:nil];
+    
+}
+
+-(void) closingSlide:(NSNotification *) not{
+    
+    if (not.object == nil) {
+        
+        self.collView.scrollEnabled = NO;
+        
+    }else{
+        
+        self.collView.scrollEnabled = YES;
+        
+    }
+  
 }
 
 -(void)pageTurn:(UIPageControl *) sender {
@@ -95,13 +113,17 @@
         }
     }
     
+    NSLog(@"%ld",indexPath.row);
+    
+    
     MainView *mainView = [[MainView alloc] initWithFrame:cell.bounds];
     mainView.centerX = self.view.centerX;
     
+    
+    mainView.index = indexPath.row;
+    
     [cell.contentView addSubview:mainView];
-    
 
-    
     return cell;
 }
 

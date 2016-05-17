@@ -73,11 +73,16 @@
         [self.mainView addSubview:self.colorView];
         
         [self clickSeg:self.lightBtn];
+       
+       NSLog(@"---8--%ld",self.index);
         
     }
     return self;
 }
 - (IBAction)clickSeg:(UIButton *)sender {
+    
+    
+    NSLog(@"-----%ld",self.index);
     
     switch (sender.tag) {
         case 1000:{
@@ -118,6 +123,11 @@
     }
 
     
+}
+
+- (IBAction)clickClosedDown:(UIButton *)sender {
+    
+    NSLog(@"关闭");
 }
 
 @end

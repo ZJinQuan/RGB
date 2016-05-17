@@ -10,4 +10,6 @@
 
 @interface MainView : UIView
 
+@property (nonatomic, assign) NSInteger index;
+
 @end
