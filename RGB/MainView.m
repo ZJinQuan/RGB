@@ -29,7 +29,6 @@
 -(LightView *)lightView{
     
     if (_lightView == nil) {
-        
         _lightView = [[LightView alloc] init];
         _lightView.frame = self.mainView.bounds;
         _lightView.hidden = YES;
@@ -40,7 +39,6 @@
 -(ModelView *)modelView{
     
     if (_modelView == nil) {
-        
         _modelView = [[ModelView alloc] init];
         _modelView.frame = self.mainView.bounds;
         _modelView.hidden = YES;
@@ -51,7 +49,6 @@
 -(ColorView *)colorView{
     
     if (_colorView == nil) {
-        
         _colorView = [[ColorView alloc] init];
         _colorView.frame = self.mainView.bounds;
         _colorView.hidden = YES;
@@ -61,8 +58,8 @@
 }
 
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame{
+    
     self = [super initWithFrame:frame];
     if (self) {
         self = [[[NSBundle mainBundle] loadNibNamed:@"MainView" owner:self options:nil] lastObject];
@@ -76,13 +73,15 @@
        
        NSLog(@"---8--%ld",self.index);
         
+        
+        NSLog(@"--- _______%ld", self.tag);
+        
     }
     return self;
 }
 - (IBAction)clickSeg:(UIButton *)sender {
-    
-    
-    NSLog(@"-----%ld",self.index);
+
+    NSLog(@"-----%ld",self.tag + 1);
     
     switch (sender.tag) {
         case 1000:{
@@ -90,6 +89,8 @@
             sender.selected = YES;
             self.lightBtn.selected = NO;
             self.modelBtn.selected = NO;
+            
+            _colorView.index = self.tag;
             
             _colorView.hidden = NO;
             _lightView.hidden = YES;
@@ -101,6 +102,8 @@
             sender.selected = YES;
             self.colorBtn.selected = NO;
             self.modelBtn.selected = NO;
+            
+            _lightView.index = self.tag;
             
             _colorView.hidden = YES;
             _lightView.hidden = NO;

@@ -60,7 +60,7 @@
     [self.pageView addTarget:self action:@selector(pageTurn:) forControlEvents:UIControlEventValueChanged];
     
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closingSlide:) name:@"closingSlide" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closingSlide:) name:@"closingSlide" object:nil];
     
 }
 
@@ -119,6 +119,7 @@
     MainView *mainView = [[MainView alloc] initWithFrame:cell.bounds];
     mainView.centerX = self.view.centerX;
     
+    mainView.tag = indexPath.row;
     
     mainView.index = indexPath.row;
     

@@ -11,5 +11,5 @@
 @interface LightView : UIView
 
 @property (nonatomic, copy) NSString *light;
-
+@property (nonatomic, assign) NSInteger index;
 @end

@@ -12,7 +12,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_def3.png" translatesAutoresizingMaskIntoConstraints="NO" id="AFP-c7-mQf">
-                    <rect key="frame" x="0.0" y="0.0" width="340" height="500"/>
+                    <rect key="frame" x="10" y="5" width="320" height="490"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Liq-Al-bOt">
                     <rect key="frame" x="47" y="339" width="246" height="50"/>
@@ -98,11 +98,11 @@
                 <constraint firstItem="Dba-Jp-Y2u" firstAttribute="top" secondItem="Du9-sV-MC6" secondAttribute="bottom" constant="8" id="66a-Tq-1jb"/>
                 <constraint firstAttribute="bottom" secondItem="Dba-Jp-Y2u" secondAttribute="bottom" constant="12" id="BZW-wC-yes"/>
                 <constraint firstItem="Du9-sV-MC6" firstAttribute="centerX" secondItem="Dba-Jp-Y2u" secondAttribute="centerX" id="avw-m3-SZ8"/>
-                <constraint firstItem="AFP-c7-mQf" firstAttribute="top" secondItem="dIi-Mt-dBA" secondAttribute="top" id="dDR-Ji-Lqc"/>
-                <constraint firstAttribute="trailing" secondItem="AFP-c7-mQf" secondAttribute="trailing" id="fMb-hN-9DZ"/>
-                <constraint firstItem="AFP-c7-mQf" firstAttribute="leading" secondItem="dIi-Mt-dBA" secondAttribute="leading" id="jQo-wy-GCl"/>
+                <constraint firstItem="AFP-c7-mQf" firstAttribute="top" secondItem="dIi-Mt-dBA" secondAttribute="top" constant="5" id="dDR-Ji-Lqc"/>
+                <constraint firstAttribute="trailing" secondItem="AFP-c7-mQf" secondAttribute="trailing" constant="10" id="fMb-hN-9DZ"/>
+                <constraint firstItem="AFP-c7-mQf" firstAttribute="leading" secondItem="dIi-Mt-dBA" secondAttribute="leading" constant="10" id="jQo-wy-GCl"/>
                 <constraint firstItem="Qof-Dt-qq9" firstAttribute="top" secondItem="dIi-Mt-dBA" secondAttribute="top" constant="31" id="jdl-ec-vyX"/>
-                <constraint firstAttribute="bottom" secondItem="AFP-c7-mQf" secondAttribute="bottom" id="kvr-k9-94k"/>
+                <constraint firstAttribute="bottom" secondItem="AFP-c7-mQf" secondAttribute="bottom" constant="5" id="kvr-k9-94k"/>
                 <constraint firstItem="Liq-Al-bOt" firstAttribute="centerX" secondItem="AFP-c7-mQf" secondAttribute="centerX" id="ndb-7C-Xi2"/>
                 <constraint firstItem="Qof-Dt-qq9" firstAttribute="centerX" secondItem="AFP-c7-mQf" secondAttribute="centerX" id="tmi-Kr-iCh"/>
                 <constraint firstItem="Du9-sV-MC6" firstAttribute="top" secondItem="Liq-Al-bOt" secondAttribute="bottom" constant="12" id="yMP-Pr-jXC"/>

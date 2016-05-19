@@ -76,8 +76,6 @@
 
         CGFloat const *colorData = CGColorGetComponents(color.CGColor);
         
-        NSLog(@"------------%f, %f, %f",colorData[0] * 255.0f, colorData[1]* 255.0f, colorData[2]* 255.0f);
-        
         
         CGFloat const dataliht = self.dataStr;
         
@@ -92,7 +90,7 @@
         bytes[1] = 0xaa;
         bytes[2] = 0x01;
         bytes[3] = 0x01;
-        bytes[4] = 0x02;
+        bytes[4] = self.index + 1;
         bytes[5] = colorData[0] * 255.0f;
         bytes[6] = colorData[1] * 255.0f;
         bytes[7] = colorData[2] * 255.0f;
@@ -128,6 +126,8 @@
     CGFloat currentTopointRadius = sqrtf(absDistanceX * absDistanceX + absDistanceY *absDistanceY);
     
     
+    CGFloat const dataliht = self.dataStr;
+    
     if (currentTopointRadius <chassisRadius) {
         //取色
         self.centerImage.center = currentPoint;
@@ -140,6 +140,8 @@
         
         AppDelegate *app = [UIApplication sharedApplication].delegate;
 
+//        CGFloat const *ligt= [self.index ];
+        
         Byte bytes[17];
         for (int i = 0; i < 17; i++) {
             bytes[i] = 0x00;
@@ -148,14 +150,18 @@
         bytes[1] = 0xaa;
         bytes[2] = 0x01;
         bytes[3] = 0x01;
-        bytes[4] = 0x02;
+        bytes[4] = self.index + 1;
         bytes[5] = colorData[0] * 255.0f;
         bytes[6] = colorData[1] * 255.0f;
         bytes[7] = colorData[2] * 255.0f;
-        bytes[8] = 0xff;
+        bytes[8] = dataliht;
         NSData *data = [NSData dataWithBytes:bytes length:17];
         
         [app.socket senddata:data];
+        
+        NSLog(@"++++++++++++++++%hhu",bytes[4]);
+        
+        NSLog(@"---------------%@",data);
         
         self.colorView.backgroundColor = color;
         if(self.delegate && [self.delegate respondsToSelector:@selector(getCurrentColor:)]){

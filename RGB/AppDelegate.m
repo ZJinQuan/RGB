@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "BrightnessViewController.h"
 #import "MainViewController.h"
+#import "Main2ViewController.h"
 
 @interface AppDelegate ()
 
@@ -22,9 +23,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     MainViewController *mainVC = [[MainViewController alloc] init];
-    BrightnessViewController *BrightnessVC = [[BrightnessViewController alloc] init];
+    Main2ViewController *mainVC2 = [[Main2ViewController alloc] init];
+//    BrightnessViewController *BrightnessVC = [[BrightnessViewController alloc] init];
     
-    self.window.rootViewController = mainVC;
+    self.window.rootViewController = mainVC2;
     
     [self.window makeKeyAndVisible];
     
