@@ -1,16 +1,16 @@
 //
-//  Main2ViewController.m
+//  MainViewController.m
 //  RGB
 //
 //  Created by QUAN on 16/5/17.
 //  Copyright © 2016年 QUAN. All rights reserved.
 //
 
-#import "Main2ViewController.h"
+#import "MainViewController.h"
 #import "MainView.h"
 #import "PageView.h"
 
-@interface Main2ViewController ()<UIScrollViewDelegate>
+@interface MainViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIPageControl *pageView;
 
@@ -18,11 +18,10 @@
 
 @end
 
-@implementation Main2ViewController
+@implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
    
     PageView *pageView = [[PageView alloc] initWithFrame:CGRectMake(0, 80, self.view.bounds.size.width, 37)];
     

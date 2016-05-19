@@ -1,39 +1,35 @@
 //
-//  BrightnessViewController.m
+//  MainView.m
 //  RGB
 //
-//  Created by QUAN on 16/5/12.
+//  Created by QUAN on 16/5/13.
 //  Copyright © 2016年 QUAN. All rights reserved.
 //
 
-#import "BrightnessViewController.h"
+#import "MainView.h"
 #import "LightView.h"
 #import "ModelView.h"
 #import "ColorView.h"
-#import "MySocket.h"
 
-@interface BrightnessViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *lightBtn;
-@property (weak, nonatomic) IBOutlet UIButton *colorBtn;
-@property (weak, nonatomic) IBOutlet UIButton *modelBtn;
+@interface MainView ()
+
 @property (weak, nonatomic) IBOutlet UIView *mainView;
-
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segView;
 
 @property (nonatomic, strong) LightView *lightView;
 @property (nonatomic, strong) ModelView *modelView;
 @property (nonatomic, strong) ColorView *colorView;
 
+@property (weak, nonatomic) IBOutlet UIButton *lightBtn;
+@property (weak, nonatomic) IBOutlet UIButton *colorBtn;
+@property (weak, nonatomic) IBOutlet UIButton *modelBtn;
 
-@property (nonatomic, strong) MySocket *socket;
 @end
 
-@implementation BrightnessViewController
+@implementation MainView
 
 -(LightView *)lightView{
     
     if (_lightView == nil) {
-        
         _lightView = [[LightView alloc] init];
         _lightView.frame = self.mainView.bounds;
         _lightView.hidden = YES;
@@ -44,7 +40,6 @@
 -(ModelView *)modelView{
     
     if (_modelView == nil) {
-        
         _modelView = [[ModelView alloc] init];
         _modelView.frame = self.mainView.bounds;
         _modelView.hidden = YES;
@@ -55,7 +50,6 @@
 -(ColorView *)colorView{
     
     if (_colorView == nil) {
-        
         _colorView = [[ColorView alloc] init];
         _colorView.frame = self.mainView.bounds;
         _colorView.hidden = YES;
@@ -64,36 +58,40 @@
     return _colorView;
 }
 
--(void)viewWillAppear:(BOOL)animated{
+
+- (instancetype)initWithFrame:(CGRect)frame{
     
-    [super viewWillAppear:animated];
-    
+    self = [super initWithFrame:frame];
+    if (self) {
+        self = [[[NSBundle mainBundle] loadNibNamed:@"MainView" owner:self options:nil] lastObject];
+        
+        
+        [self.mainView addSubview:self.lightView];
+        [self.mainView addSubview:self.modelView];
+        [self.mainView addSubview:self.colorView];
+        
+        [self clickSeg:self.lightBtn];
+       
+       NSLog(@"---8--%ld",self.index);
+        
+        
+        NSLog(@"--- _______%ld", self.tag);
+        
+    }
+    return self;
 }
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    AppDelegate *app = [UIApplication sharedApplication].delegate;
-    
-    [app.socket sendMessage:@"aaaaaaaaaa"];
-
-    [self.mainView addSubview:self.lightView];
-    [self.mainView addSubview:self.modelView];
-    [self.mainView addSubview:self.colorView];
-    
-    [self clickSeg:self.lightBtn];
-    
-}
-
-
 - (IBAction)clickSeg:(UIButton *)sender {
+
+    NSLog(@"-----%ld",self.tag + 1);
     
     switch (sender.tag) {
         case 1000:{
-
+            
             sender.selected = YES;
             self.lightBtn.selected = NO;
             self.modelBtn.selected = NO;
+            
+            _colorView.index = self.tag;
             
             _colorView.hidden = NO;
             _lightView.hidden = YES;
@@ -105,6 +103,8 @@
             sender.selected = YES;
             self.colorBtn.selected = NO;
             self.modelBtn.selected = NO;
+            
+            _lightView.index = self.tag;
             
             _colorView.hidden = YES;
             _lightView.hidden = NO;
@@ -125,7 +125,13 @@
         default:
             break;
     }
+
     
+}
+
+- (IBAction)clickClosedDown:(UIButton *)sender {
+    
+    NSLog(@"关闭");
 }
 
 @end

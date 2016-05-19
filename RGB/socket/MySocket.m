@@ -21,12 +21,12 @@
 //        }
 //        else
        
-            self.socketHost = @"192.168.4.1";
-//        self.socketHost = @"192.168.1.122";
+//            self.socketHost = @"192.168.4.1";
+        self.socketHost = @"192.168.1.124";
     
         
-        self.socketPort = 8080;
-//        self.socketPort = 6666;
+//        self.socketPort = 8080;
+        self.socketPort = 6666;
         self.timeout = 2;
         [self createSocket];
         }
