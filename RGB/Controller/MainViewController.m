@@ -76,7 +76,7 @@
         self.mainScrollView.scrollEnabled = NO;
         
     }else{
-        
+         
         self.mainScrollView.scrollEnabled = YES;
         
     }
