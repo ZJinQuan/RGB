@@ -20,7 +20,7 @@
 @property (nonatomic, assign) double markRadius;//标记半径
 @property (nonatomic, copy) void (^drowNumber)(CGFloat radius,CGFloat x,CGFloat y);//如果需要在圆弧上面写上字，需要给该block赋值，其中，radius为圆弧直径，x,y中心点
 @property (nonatomic, assign) double circleLineWidth;//圆弧宽度
-@property (nonatomic, assign) double lineWidth;//线宽
+@property (nonatomic, assign) double lineWidth;// 线宽
 
 - (instancetype)init;
 - (instancetype)initWithFrame:(CGRect)frame;
@@ -34,13 +34,13 @@
 
 @property (strong, nonatomic) UIColor *color;
 
-@property (nonatomic, readwrite) double minValue;//最小
-@property (nonatomic, readwrite) double maxValue;//最大
+@property (nonatomic, readwrite) double minValue; //最小
+@property (nonatomic, readwrite) double maxValue; //最大
 
-@property (nonatomic, readwrite) double startValue;//开始值
-@property (nonatomic, readwrite) double endValue;//结束值
+@property (nonatomic, readwrite) double startValue; //开始值
+@property (nonatomic, readwrite) double endValue; //结束值
 
-@property (nonatomic, readwrite) NSInteger tag;//标记
+@property (nonatomic, readwrite) NSInteger tag; //标记
 
 - (instancetype) init;
 

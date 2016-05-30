@@ -68,12 +68,12 @@ typedef struct{
 }
 //初始化
 - (void) setupDefaultConfigurations{
-//    self.sectorsRadius = 20;
+    //    self.sectorsRadius = 20;
     self.backgroundColor = [UIColor clearColor];
-//    self.startAngle = toRadians(250);
+    //    self.startAngle = toRadians(250);
     self.markRadius = 12;
-//    self.circleLineWidth = 20;
-//    self.lineWidth = 0;
+    //    self.circleLineWidth = 20;
+    //    self.lineWidth = 0;
 }
 
 #pragma mark - Setters
@@ -88,26 +88,26 @@ typedef struct{
 - (BOOL) beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
     CGPoint touchPoint = [touch locationInView:self];
     
-        YHSector *sector = self.sector;
-        YHSectorDrawingInformation drawInf =[self sectorToDrawInf:sector ];
+    YHSector *sector = self.sector;
+    YHSectorDrawingInformation drawInf =[self sectorToDrawInf:sector ];
+    
+    if([self touchInCircleWithPoint:touchPoint circleCenter:drawInf.endMarkerCenter]){
+        trackingSector = sector;
+        trackingSectorDrawInf = drawInf;
+        trackingSectorStartMarker = NO;
         
-        if([self touchInCircleWithPoint:touchPoint circleCenter:drawInf.endMarkerCenter]){
-            trackingSector = sector;
-            trackingSectorDrawInf = drawInf;
-            trackingSectorStartMarker = NO;
-            
-            
-            
-            return YES;
-        }
         
-        if([self touchInCircleWithPoint:touchPoint circleCenter:drawInf.startMarkerCenter]){
-            trackingSector = sector;
-            trackingSectorDrawInf = drawInf;
-            trackingSectorStartMarker = YES;
-            
-            return YES;
-        }
+        
+        return YES;
+    }
+    
+    if([self touchInCircleWithPoint:touchPoint circleCenter:drawInf.startMarkerCenter]){
+        trackingSector = sector;
+        trackingSectorDrawInf = drawInf;
+        trackingSectorStartMarker = YES;
+        
+        return YES;
+    }
     
     return NO;
 }
@@ -200,9 +200,9 @@ typedef struct{
 
 #pragma mark - Drawing
 
-- (void)drawRect:(CGRect)rect{
+- (void)drawRect:(CGRect)rect {
     
-        [self drawSector:self.sector];
+    [self drawSector:self.sector];
 }
 
 - (void)drawSector:(YHSector *)sector{
@@ -211,7 +211,7 @@ typedef struct{
     CGContextSetLineWidth(context, self.circleLineWidth);
     
     UIColor *startCircleColor = sector.color;
-
+    
     UIColor *markBackcolor = [UIColor whiteColor];
     
     YHSectorDrawingInformation drawInf = [self sectorToDrawInf:sector];
@@ -227,7 +227,7 @@ typedef struct{
     CGContextAddArc(context, x, y, r, self.startAngle, drawInf.circleOffsetAngle, 0);
     CGContextSetLineCap(context, kCGLineCapRound);
     CGContextStrokePath(context);
-
+    
     
     //clearing place for start marker
     CGContextSaveGState(context);
@@ -244,31 +244,31 @@ typedef struct{
     CGContextClearRect(context, self.bounds);
     CGContextRestoreGState(context);
     
-//    CGFloat len = r/sqrt(2);
+    //    CGFloat len = r/sqrt(2);
     
     //外圆弧
-////    CGContextSetLineWidth(context, self.lineWidth);
-////    CGContextAddArc(context, x, y, r+10, self.startAngle, M_PI_4, 0);
-////    CGContextStrokePath(context);
-//    
-//    //左端点
-//    CGContextSaveGState(context);
-//    CGContextAddArc(context, x-len, y+len, 10, -M_PI_4, M_PI_4*3, 0);
-//    CGContextStrokePath(context);
-//    
-//    //内圆弧
-//    CGContextSaveGState(context);
-//    CGContextAddArc(context, x, y, r-10, self.startAngle, M_PI_4, 0);
-//    CGContextStrokePath(context);
-//    //右端点
-//    CGContextSaveGState(context);
-//    CGContextAddArc(context, x+len, y+len, 10, M_PI_4, M_PI_4*5, 0);
-//    CGContextStrokePath(context);
+    ////    CGContextSetLineWidth(context, self.lineWidth);
+    ////    CGContextAddArc(context, x, y, r+10, self.startAngle, M_PI_4, 0);
+    ////    CGContextStrokePath(context);
+    //
+    //    //左端点
+    //    CGContextSaveGState(context);
+    //    CGContextAddArc(context, x-len, y+len, 10, -M_PI_4, M_PI_4*3, 0);
+    //    CGContextStrokePath(context);
+    //
+    //    //内圆弧
+    //    CGContextSaveGState(context);
+    //    CGContextAddArc(context, x, y, r-10, self.startAngle, M_PI_4, 0);
+    //    CGContextStrokePath(context);
+    //    //右端点
+    //    CGContextSaveGState(context);
+    //    CGContextAddArc(context, x+len, y+len, 10, M_PI_4, M_PI_4*5, 0);
+    //    CGContextStrokePath(context);
     
     //如果需要圆弧上面有字
-//    if (self.drowNumber) {
-//        self.drowNumber(r,x,y);
-//    }
+    //    if (self.drowNumber) {
+    //        self.drowNumber(r,x,y);
+    //    }
     
     //标记
     CGContextSetLineWidth(context, self.lineWidth);
@@ -280,12 +280,12 @@ typedef struct{
     [[startCircleColor colorWithAlphaComponent:drawInf.startMarkerAlpha] setStroke];
     CGContextAddArc(context, drawInf.startMarkerCenter.x, drawInf.startMarkerCenter.y, drawInf.startMarkerRadius-1, 0.0, 6.28, 0);
     CGContextFillPath(context);
-//    //标记上面的字
-//    NSString *startMarkerStr = [NSString stringWithFormat:@"%.0f", sector.startValue+16];
-//    [self drawString:startMarkerStr
-//            withFont:drawInf.startMarkerFontSize
-//               color:[startCircleColor colorWithAlphaComponent:drawInf.startMarkerAlpha]
-//          withCenter:drawInf.startMarkerCenter];
+    //    //标记上面的字
+    //    NSString *startMarkerStr = [NSString stringWithFormat:@"%.0f", sector.startValue+16];
+    //    [self drawString:startMarkerStr
+    //            withFont:drawInf.startMarkerFontSize
+    //               color:[startCircleColor colorWithAlphaComponent:drawInf.startMarkerAlpha]
+    //          withCenter:drawInf.startMarkerCenter];
 }
 
 
@@ -311,7 +311,7 @@ typedef struct{
     
     drawInf.startMarkerFontSize = 18;
     drawInf.startMarkerAlpha = 1.0;
-
+    
     return drawInf;
 }
 //mark上面的字
@@ -326,7 +326,7 @@ typedef struct{
     CGFloat y = center.y - (self.markRadius / 2);
     CGRect textRect = CGRectMake(x, y, self.markRadius*2, self.markRadius);
     
-//    [s drawInRect:textRect withAttributes:dic];
+    //    [s drawInRect:textRect withAttributes:dic];
 }
 @end
 

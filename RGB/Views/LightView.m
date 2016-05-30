@@ -42,7 +42,7 @@
         slder.lineWidth = 2;
         slder.circleLineWidth = 10;
         [self addSubview:slder];
-
+        
         
     }
     return self;
@@ -51,7 +51,7 @@
 - (void)valueChange:(YHArcSlider *)slder {
     
     
-//    NSLog(@"%ld",self.index);
+    NSLog(@"%ld",self.index);
     
     CGFloat const dataliht = [_light floatValue];
     
@@ -75,7 +75,11 @@
     
     NSLog(@"================%@",data);
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"LightView" object:_light];
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    
+    [app.socket senddata:data];
+    
+    //    [[NSNotificationCenter defaultCenter] postNotificationName:@"LightView" object:_light];
     
 }
 

@@ -14,6 +14,27 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="state3.png" translatesAutoresizingMaskIntoConstraints="NO" id="fjQ-Ao-pyd">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
                 </imageView>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hf-RE-HMO">
+                    <rect key="frame" x="13" y="17" width="91" height="127"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="modeChanged:" destination="-2" eventType="touchUpInside" id="HEV-IF-cHZ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebw-y7-NM1">
+                    <rect key="frame" x="134" y="17" width="91" height="127"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="modeChanged:" destination="-2" eventType="touchUpInside" id="J2z-XH-PYt"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6i-jD-bh4">
+                    <rect key="frame" x="44" y="143" width="153" height="89"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="modeChanged:" destination="-2" eventType="touchUpInside" id="XBw-W6-pOS"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>

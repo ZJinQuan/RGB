@@ -14,22 +14,22 @@
 {
     self = [super init];
     if (self) {
-//        self.socketHost = @"120.24.165.21";//192.168.1.200
-//        NSString *str = [[NSUserDefaults standardUserDefaults] objectForKey:@"ipAddress"];
-//        if (str.length) {
-//            self.socketHost = str;
-//        }
-//        else
-       
-            self.socketHost = @"192.168.4.1";
-//        self.socketHost = @"192.168.1.124";
-    
+        //        self.socketHost = @"120.24.165.21";//192.168.1.200
+        //        NSString *str = [[NSUserDefaults standardUserDefaults] objectForKey:@"ipAddress"];
+        //        if (str.length) {
+        //            self.socketHost = str;
+        //        }
+        //        else
         
+        //            self.socketHost = @"192.168.4.1";
+        self.socketHost = @"192.168.0.4";
+        
+        
+        //        self.socketPort = 8080;
         self.socketPort = 8080;
-//        self.socketPort = 6666;
-        self.timeout = 2;
+        self.timeout =10;
         [self createSocket];
-        }
+    }
     return self;
 }
 
@@ -39,7 +39,7 @@
 
 -(void)sendMessage:(NSString *)message
 {
-//    NSLog(@"%p send >>> %@",self.socket,message);
+    //    NSLog(@"%p send >>> %@",self.socket,message);
     if (_isConnect) {
         NSData *data = [message dataUsingEncoding:NSASCIIStringEncoding];
         [self.socket writeData:data withTimeout:_timeout tag:0];
@@ -48,8 +48,8 @@
 
 -(void)onSocket:(AsyncSocket *)sock didWriteDataWithTag:(long)tag
 {
-//    NSLog(@"mysocket send ok");
-     [self.socket readDataWithTimeout:_timeout tag:0];
+    //    NSLog(@"mysocket send ok");
+    [self.socket readDataWithTimeout:_timeout tag:0];
 }
 -(NSTimeInterval)onSocket:(AsyncSocket *)sock shouldTimeoutReadWithTag:(long)tag elapsed:(NSTimeInterval)elapsed bytesDone:(NSUInteger)length
 {
@@ -65,7 +65,7 @@
     if (self.callBack) {
         self.callBack(dataString);
     }
-//    [self.socket readDataWithTimeout:5 tag:0];
+    //    [self.socket readDataWithTimeout:5 tag:0];
 }
 
 -(void)createSocket{
@@ -94,7 +94,7 @@
 
 -(void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port
 {
-    NSLog(@"==== >>> %@",sock);
+    NSLog(@"==== connect successs >>> %@",sock);
     _isConnect = YES;
     if (self.connectSuccess) {
         self.connectSuccess();
@@ -108,7 +108,7 @@
         self.disConnect(self.socket.userData);
     }
     if (self.socket.userData != SocketOfflineByUser) {
-//        usleep(100000);
+        //        usleep(100000);
         [self socketConnectHost];
     }
 }

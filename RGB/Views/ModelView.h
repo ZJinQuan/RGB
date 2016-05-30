@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ModelView : UIView
-
+@property (nonatomic, assign) NSInteger index;
 @end

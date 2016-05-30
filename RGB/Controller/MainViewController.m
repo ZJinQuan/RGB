@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    
     PageView *pageView = [[PageView alloc] initWithFrame:CGRectMake(0, 80, self.view.bounds.size.width, 37)];
     
     pageView.backgroundColor = [UIColor clearColor];
@@ -40,7 +40,7 @@
     self.pageView = pageView;
     self.pageView.userInteractionEnabled = NO;
     [self.pageView addTarget:self action:@selector(pageTurn:) forControlEvents:UIControlEventValueChanged];
-    
+    self.mainScrollView.width= [UIScreen mainScreen].bounds.size.width;
     
     for (int i = 0; i < 8; i++) {
         
@@ -57,6 +57,7 @@
         [self.mainScrollView addSubview:main];
         
     }
+    
     
     
     self.mainScrollView.contentSize = CGSizeMake(self.mainScrollView.width * 8, 0);
@@ -76,7 +77,7 @@
         self.mainScrollView.scrollEnabled = NO;
         
     }else{
-         
+        
         self.mainScrollView.scrollEnabled = YES;
         
     }

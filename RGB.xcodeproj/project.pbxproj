@@ -40,6 +40,7 @@
 		1414FD291CE45DFC003D1D81 /* YHMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 1414FD271CE45DFC003D1D81 /* YHMath.m */; };
 		144CDA241CE5F7310045FBD5 /* yanse.png in Resources */ = {isa = PBXBuildFile; fileRef = 144CDA231CE5F7310045FBD5 /* yanse.png */; };
 		144CDA261CE5F7BA0045FBD5 /* xishe.png in Resources */ = {isa = PBXBuildFile; fileRef = 144CDA251CE5F7BA0045FBD5 /* xishe.png */; };
+		144DEDC31CFBDBCC00980D31 /* ModelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 144DEDC21CFBDBCC00980D31 /* ModelView.xib */; };
 		146CD2481CE5688D0077FEE3 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 146CD2451CE5688D0077FEE3 /* AsyncSocket.m */; };
 		146CD2491CE5688D0077FEE3 /* MySocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 146CD2471CE5688D0077FEE3 /* MySocket.m */; };
 		14BB42671CEDABCB009B78D3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BB42561CEDABCB009B78D3 /* MainViewController.m */; };
@@ -51,7 +52,6 @@
 		14BB426D1CEDABCB009B78D3 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BB42601CEDABCB009B78D3 /* MainView.m */; };
 		14BB426E1CEDABCB009B78D3 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14BB42611CEDABCB009B78D3 /* MainView.xib */; };
 		14BB426F1CEDABCB009B78D3 /* ModelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BB42631CEDABCB009B78D3 /* ModelView.m */; };
-		14BB42701CEDABCB009B78D3 /* ModelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14BB42641CEDABCB009B78D3 /* ModelView.xib */; };
 		14BB42711CEDABCB009B78D3 /* PageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BB42661CEDABCB009B78D3 /* PageView.m */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +117,7 @@
 		1414FD271CE45DFC003D1D81 /* YHMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHMath.m; sourceTree = "<group>"; };
 		144CDA231CE5F7310045FBD5 /* yanse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yanse.png; sourceTree = "<group>"; };
 		144CDA251CE5F7BA0045FBD5 /* xishe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xishe.png; sourceTree = "<group>"; };
+		144DEDC21CFBDBCC00980D31 /* ModelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModelView.xib; sourceTree = "<group>"; };
 		146CD2441CE5688D0077FEE3 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
 		146CD2451CE5688D0077FEE3 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
 		146CD2461CE5688D0077FEE3 /* MySocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySocket.h; sourceTree = "<group>"; };
@@ -135,7 +136,6 @@
 		14BB42611CEDABCB009B78D3 /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		14BB42621CEDABCB009B78D3 /* ModelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelView.h; sourceTree = "<group>"; };
 		14BB42631CEDABCB009B78D3 /* ModelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelView.m; sourceTree = "<group>"; };
-		14BB42641CEDABCB009B78D3 /* ModelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModelView.xib; sourceTree = "<group>"; };
 		14BB42651CEDABCB009B78D3 /* PageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageView.h; sourceTree = "<group>"; };
 		14BB42661CEDABCB009B78D3 /* PageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -310,7 +310,7 @@
 				14BB42611CEDABCB009B78D3 /* MainView.xib */,
 				14BB42621CEDABCB009B78D3 /* ModelView.h */,
 				14BB42631CEDABCB009B78D3 /* ModelView.m */,
-				14BB42641CEDABCB009B78D3 /* ModelView.xib */,
+				144DEDC21CFBDBCC00980D31 /* ModelView.xib */,
 				14BB42651CEDABCB009B78D3 /* PageView.h */,
 				14BB42661CEDABCB009B78D3 /* PageView.m */,
 			);
@@ -432,7 +432,7 @@
 				144CDA241CE5F7310045FBD5 /* yanse.png in Resources */,
 				14BB426E1CEDABCB009B78D3 /* MainView.xib in Resources */,
 				1414FD0A1CE4222F003D1D81 /* state4@2x.png in Resources */,
-				14BB42701CEDABCB009B78D3 /* ModelView.xib in Resources */,
+				144DEDC31CFBDBCC00980D31 /* ModelView.xib in Resources */,
 				1414FCFC1CE4222F003D1D81 /* btn_color@2x.png in Resources */,
 				1414FD001CE4222F003D1D81 /* btn_model@2x.png in Resources */,
 				1414FD081CE4222F003D1D81 /* state3_pre@2x.png in Resources */,

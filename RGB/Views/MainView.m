@@ -71,8 +71,9 @@
         [self.mainView addSubview:self.colorView];
         
         [self clickSeg:self.lightBtn];
-       
-       NSLog(@"---8--%ld",self.index);
+        
+        
+        NSLog(@"---8--%ld",self.index);
         
         
         NSLog(@"--- _______%ld", self.tag);
@@ -81,7 +82,7 @@
     return self;
 }
 - (IBAction)clickSeg:(UIButton *)sender {
-
+    
     NSLog(@"-----%ld",self.tag + 1);
     
     switch (sender.tag) {
@@ -116,6 +117,7 @@
             self.colorBtn.selected = NO;
             self.lightBtn.selected = NO;
             
+            _modelView.index = self.tag;
             _colorView.hidden = YES;
             _lightView.hidden = YES;
             _modelView.hidden = NO;
@@ -125,13 +127,23 @@
         default:
             break;
     }
-
+    
     
 }
 
 - (IBAction)clickClosedDown:(UIButton *)sender {
     
     NSLog(@"关闭");
+}
+
+/** 设置是第几个灯的 */
+- (void)setTag:(NSInteger)tag
+{
+    [super setTag:tag];
+    
+    self.lightView.index = tag;
+    self.colorView.index = tag;
+    self.modelView.index = tag;
 }
 
 @end

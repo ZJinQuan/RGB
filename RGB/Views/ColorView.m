@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIView *colorView;
 
 @property (nonatomic, strong) LightView *lightView;
+
 @end
 
 @implementation ColorView
@@ -60,20 +61,20 @@
     CGPoint currentPoint = [touch locationInView:self];
     
     CGFloat chassRadius = (MYHEIGHT - 40)*0.5 - MYWIDTH/20;
-//    NSLog(@"chassRadius:%f",chassRadius);
+    //    NSLog(@"chassRadius:%f",chassRadius);
     CGFloat absDistanceX = fabs(currentPoint.x - MYCENTER.x);
     CGFloat absDistanceY = fabs(currentPoint.y - MYCENTER.y);
     CGFloat currentTopointRadius = sqrtf(absDistanceX  * absDistanceX + absDistanceY *absDistanceY);
     
-//    NSLog(@"currentRadius:%f",currentTopointRadius);
+    //    NSLog(@"currentRadius:%f",currentTopointRadius);
     
     if(currentTopointRadius < chassRadius){//实在色盘上面
         
         self.centerImage.center =  currentPoint;
         UIColor *color = [self colorOfPoint:currentPoint];
-
+        
         self.colorView.backgroundColor = color;
-
+        
         CGFloat const *colorData = CGColorGetComponents(color.CGColor);
         
         
@@ -101,7 +102,7 @@
         
         NSData *data = [NSData dataWithBytes:bytes length:17];
         NSLog(@"---------------%@",data);
-
+        
         [app.socket senddata:data];
         
         
@@ -137,7 +138,7 @@
         CGFloat const *colorData = CGColorGetComponents(color.CGColor);
         
         AppDelegate *app = [UIApplication sharedApplication].delegate;
-
+        
         
         Byte bytes[17];
         for (int i = 0; i < 17; i++) {
