@@ -68,7 +68,7 @@
     
     //    NSLog(@"currentRadius:%f",currentTopointRadius);
     
-    if(currentTopointRadius < chassRadius){//实在色盘上面
+    if(currentTopointRadius < chassRadius && currentTopointRadius > 30){//实在色盘上面
         
         self.centerImage.center =  currentPoint;
         UIColor *color = [self colorOfPoint:currentPoint];
@@ -129,7 +129,7 @@
     
     CGFloat const dataliht = self.dataStr;
     
-    if (currentTopointRadius <chassisRadius) {
+    if (currentTopointRadius <chassisRadius && currentTopointRadius > 30) {
         //取色
         self.centerImage.center = currentPoint;
         

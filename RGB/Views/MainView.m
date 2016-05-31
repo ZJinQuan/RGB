@@ -65,16 +65,13 @@
     if (self) {
         self = [[[NSBundle mainBundle] loadNibNamed:@"MainView" owner:self options:nil] lastObject];
         
-        
         [self.mainView addSubview:self.lightView];
         [self.mainView addSubview:self.modelView];
         [self.mainView addSubview:self.colorView];
         
         [self clickSeg:self.lightBtn];
         
-        
         NSLog(@"---8--%ld",self.index);
-        
         
         NSLog(@"--- _______%ld", self.tag);
         

@@ -20,6 +20,26 @@
 
 @implementation MainViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    for (int i = 0; i < 8; i++) {
+        
+        MainView *main = [[MainView alloc] init];
+        
+        CGFloat VX = i * self.mainScrollView.width;
+        
+        main.frame = CGRectMake(VX, 0, self.mainScrollView.width, self.mainScrollView.height);
+        
+        main.tag = i;
+        
+        [self.mainScrollView addSubview:main];
+        
+    }
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -40,32 +60,17 @@
     self.pageView = pageView;
     self.pageView.userInteractionEnabled = NO;
     [self.pageView addTarget:self action:@selector(pageTurn:) forControlEvents:UIControlEventValueChanged];
-    self.mainScrollView.width= [UIScreen mainScreen].bounds.size.width;
     
-    for (int i = 0; i < 8; i++) {
-        
-        MainView *main = [[MainView alloc] init];
-        
-        CGFloat VX = i * self.mainScrollView.width;
-        
-        main.frame = CGRectMake(VX, 0, self.mainScrollView.width, self.mainScrollView.height);
-        //隐藏指示条
-        self.mainScrollView.showsHorizontalScrollIndicator = NO;
-        
-        main.tag = i;
-        
-        [self.mainScrollView addSubview:main];
-        
-    }
+    self.mainScrollView.width = [UIScreen mainScreen].bounds.size.width;
     
-    
+    //隐藏指示条
+    self.mainScrollView.showsHorizontalScrollIndicator = NO;
     
     self.mainScrollView.contentSize = CGSizeMake(self.mainScrollView.width * 8, 0);
     
     self.mainScrollView.pagingEnabled = YES;
     
     self.mainScrollView.delegate = self;
-    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closingSlide:) name:@"closingSlide" object:nil];
 }
